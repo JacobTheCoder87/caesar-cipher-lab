@@ -10,7 +10,8 @@ def encrypt(message, k):
 # and decode within the range from 97 through 123 no matter which K value is provided 
 # which represents lowercase alphabets from a - z
         if numr > 123:
-# Dividing by the remainder will ensure that we will never exceed the limits set by our barrier
+# By using the modulous operator we are returning the remainder of (numr- 123) / 26. This way we
+# will ensure that our newnumr will never exceed over 123 when given an arbitarily large key value.
             barrier = (numr - 123) % 26
             newnumr = 97 + barrier
             alpha = chr(newnumr)
@@ -18,7 +19,10 @@ def encrypt(message, k):
         else:
             alpha = chr(numr)
             alphalist.append(alpha)
-    return alphalist
+# Writing a join function with no spaces to make sure that I am joining each variable of my list together. Ultimately
+# we want to input a string and return a string for our output as well
+    output_list = ''.join(alphalist)
+    return output_list
 
 def decrypt(message, k):
     alphalist = []
@@ -33,7 +37,8 @@ def decrypt(message, k):
         else:
             alpha = chr(numr)
             alphalist.append(alpha)
-    return alphalist
+    output_list = ''.join(alphalist)
+    return output_list
 
 
 if __name__ == "__main__":
